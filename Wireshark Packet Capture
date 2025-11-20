@@ -1,0 +1,78 @@
+                                                                                   TASK 5-Wireshark Packet Capture 
+Step 1: Verified Wireshark Installation (Linux)
+
+Since Wireshark was already pre-installed on my Linux system, I first verified the installation:
+
+1. I opened the terminal.
+2. I typed the command: wireshark --version
+3. Since Wireshark was installed, the version information was displayed.
+4. If Wireshark had not been installed, you can download it from the official Wireshark website or install it through the terminal using:
+   sudo apt install wireshark
+5. I opened Wireshark by searching for it in the terminal by Running:
+   wireshark
+you can also open it in the application menu.
+
+Step 2: Selected Network Interface
+
+1.After Wireshark was opened, a list of network interfaces was displayed.
+2.These interfaces represented different network devices on my system.
+  Any interface chosen had to have an active internet connection and be capable of sending and receiving packets.
+3.Since I had connected my mobile hotspot to the laptop, I selected the wlan0 network interface.
+
+Step 3: Started Capturing Traffic
+
+1. Since I clicked on **wlan0**, which was my active network interface.
+2. Wireshark was now ready to capture network traffic.
+3. I pressed the **Start** button to begin capturing packets.
+4. To generate traffic, I opened my browser and visited **flipkart.com**.
+5. I performed several searches on the website to create more network activity.
+
+Step 4: Stopped the Capture
+
+1. After completing my browsing and searches, I returned to Wireshark.
+2. I clicked the **Stop** icon to stop the packet capture.
+3. The captured packets were now visible, and I began analyzing the recorded traffic.
+
+Step 5: Filter Captured Packets by Protocol
+
+1. In the top "Display Filter" bar, enter a protocol name such as:
+
+   * `http`
+   * `dns`
+   * `tcp`
+   * `icmp`
+2. Press **Enter** to apply the filter.
+3. Wireshark will now show only packets related to that protocol.
+
+---
+
+## Step 6: Identify at Least 3 Protocols
+
+During analysis, look for at least three different protocols such as:
+
+* HTTP
+* DNS
+* TCP
+* ICMP
+* ARP
+
+---
+
+## Step 7: Export the Capture as a .pcap File
+
+1. Go to **File > Export Specified Packets** or **Save As**.
+2. Choose the format `.pcap`.
+3. Save the file to your system.
+
+---
+
+## Step 8: Summarize Your Findings
+
+In your summary, include:
+
+* The protocols you identified.
+* What each protocol does.
+* Example packet details (source IP, destination IP, protocol type).
+* Any unusual or interesting traffic observed.
+
+---
