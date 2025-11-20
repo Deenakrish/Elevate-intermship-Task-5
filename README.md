@@ -1,4 +1,4 @@
-                           ireshark Network Traffic Analysis 
+                                     wireshark Network Traffic Analysis 
 
 This repository contains the results of my Wireshark-based network traffic analysis conducted as part of a Cyber Security internship task.
 The objective was to capture real network packets, filter them by protocol, analyze their structure, and export the data for further study.
