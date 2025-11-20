@@ -1,4 +1,4 @@
-    Wireshark Network Traffic Analysis 
+                           ireshark Network Traffic Analysis 
 
 This repository contains the results of my Wireshark-based network traffic analysis conducted as part of a Cyber Security internship task.
 The objective was to capture real network packets, filter them by protocol, analyze their structure, and export the data for further study.
@@ -38,11 +38,11 @@ HTTP POST request with form data
 
 All findings were documented for clarity.
 
-7. Exporting the Capture
+    7. Exporting the Capture
 
 After completing the analysis, the capture was saved and exported as a .pcap file for future reference or deeper inspection.
 
-8. Summary of Findings
+    8. Summary of Findings
 
 All captured protocols were analyzed and explained, with screenshots included in the repository for verification and demonstration.
 The final .pcap file and protocol summaries provide a complete view of the network behavior during the session.
