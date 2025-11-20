@@ -1,4 +1,4 @@
-                                                                                   TASK 5-Wireshark Packet Capture 
+                                                         TASK 5-Wireshark Packet Capture 
 Step 1: Verified Wireshark Installation (Linux)
 
 Since Wireshark was already pre-installed on my Linux system, I first verified the installation:
@@ -24,8 +24,8 @@ Step 3: Started Capturing Traffic
 1. Since I clicked on **wlan0**, which was my active network interface.
 2. Wireshark was now ready to capture network traffic.
 3. I pressed the **Start** button to begin capturing packets.
-4. To generate traffic, I opened my browser and visited **flipkart.com**.
-5. I performed several searches on the website to create more network activity.
+4. To generate traffic, I opened my browser and visited **testphp.vulnweb.com*.
+5. I performed several activities on the website to create more network activity.
 
 Step 4: Stopped the Capture
 
@@ -33,46 +33,112 @@ Step 4: Stopped the Capture
 2. I clicked the **Stop** icon to stop the packet capture.
 3. The captured packets were now visible, and I began analyzing the recorded traffic.
 
-Step 5: Filter Captured Packets by Protocol
+Step 5: Filtered Captured Packets by Protocol
 
-1. In the top "Display Filter" bar, enter a protocol name such as:
+1.After capturing network traffic , I applied protocol filters in Wireshark to isolate specific types of packets. 
+2.Using the filter bar, I filtered by different protocols such as DNS, ARP, TCP, and HTTP to identify and analyze distinct network behaviors.
+3.Wireshark allowed me to easily view packet details, including source/destination addresses, ports, and protocol-specific information.
 
-   * `http`
-   * `dns`
-   * `tcp`
-   * `icmp`
-2. Press **Enter** to apply the filter.
-3. Wireshark will now show only packets related to that protocol.
+During the analysis, I successfully identified and captured traffic
 
----
+Step 6: Protocol Analysis of Captured Packets
 
-## Step 6: Identify at Least 3 Protocols
+After applying protocol-based filters in Wireshark, I analyzed multiple packets from different network layers.
+Below is a summarized and structured analysis of the protocols captured during the traffic monitoring session.
 
-During analysis, look for at least three different protocols such as:
+🔹 1. DNS (Domain Name System) Packet Analysis
 
-* HTTP
-* DNS
-* TCP
-* ICMP
-* ARP
+Filter Used: dns
 
----
+One DNS query packet requested the IPv6 address (AAAA record) for the domain:
+Domain Queried: testphp.vulnweb.com
+Source IP: 10.131.209.19
+Destination IP: 10.131.209.3
+Protocol: UDP (Port 53)
+Transaction ID: 0x02b8
 
-## Step 7: Export the Capture as a .pcap File
+Summary:
+The system attempted to resolve a domain name to an IPv6 address using the DNS server. DNS uses UDP for faster communication.
 
-1. Go to **File > Export Specified Packets** or **Save As**.
-2. Choose the format `.pcap`.
-3. Save the file to your system.
+Screenshot Attached: (DNS Query)
 
----
+🔹 2. ARP (Address Resolution Protocol) Packet Analysis
 
-## Step 8: Summarize Your Findings
+Filter Used: arp
 
-In your summary, include:
+One ARP reply packet was captured, where a device responded with its MAC address mapping:
+Operation: ARP Reply
+Sender IP: 10.131.209.19
+Sender MAC: f4:4d:08:05:09:38
+Target IP: 10.131.209.3
+Target MAC: 1a:40:11:89:37:39
 
-* The protocols you identified.
-* What each protocol does.
-* Example packet details (source IP, destination IP, protocol type).
-* Any unusual or interesting traffic observed.
+Summary:
+ARP is used within the local network to map IP addresses to MAC addresses. This ARP reply provided the MAC address of the requesting device.
 
----
+Screenshot Attached: (ARP Reply)
+
+🔹 3. TCP (Transmission Control Protocol) Packet Analysis
+
+Filter Used: tcp
+
+A TCP SYN-ACK packet was captured, showing part of the TCP three-way handshake:
+Source Port: 80
+Destination Port: 39128
+Flags: SYN, ACK
+Sequence Number: 0
+Acknowledgment Number: 1
+
+Summary:
+This packet indicates the server acknowledging the client’s connection attempt. TCP ensures reliable and ordered communication between devices.
+
+Screenshot Attached: (TCP Packet)
+
+🔹 4. HTTP (Hypertext Transfer Protocol) Packet Analysis
+
+Filter Used: http
+
+A plaintext HTTP POST request was captured:
+Method: POST
+URL: /userinfo.php
+Source IP: 10.131.209.19
+Destination IP: 44.228.249.3
+Content Type: application/x-www-form-urlencoded
+Payload Size: 527 bytes
+
+Summary:
+This packet shows the client sending form data to the server over an unencrypted HTTP connection. Since HTTP is not secure, anyone monitoring the traffic could view the transmitted data.
+
+Screenshot Attached: (HTTP POST)
+
+✅ Step 7: Saving & Exporting the Capture File
+
+After analyzing all the packets—including DNS queries, TCP handshakes, HTTP requests/responses, and ARP broadcasts—I saved the entire Wireshark capture for future analysis.
+
+I clicked on:
+
+File → Save As
+and exported the packet capture to my system in .pcap format.
+
+This allows me to:
+Reopen the capture later for deeper inspection
+Use it in network analysis tools
+Attach it as evidence or reference for reports
+Share it with team members for collaborative investigation
+
+By exporting the file as a .pcap, the full details of the network traffic I filtered and analyzed can be reused for further processing, documentation, or security auditing.
+
+Step 8: Summary of Findings
+
+In this analysis, I examined multiple types of network packets captured in Wireshark, including DNS, TCP, HTTP, and ARP traffic. Each protocol was filtered, reviewed, and summarized individually to understand its purpose, behavior, and role in network communication.
+
+I documented:
+DNS queries and responses (AAAA, A records)
+TCP three-way handshake packets
+HTTP request and response packets
+ARP broadcast and reply frames
+
+To provide clear evidence and reference, I also attached all relevant screenshots of the filtered packet views and protocol breakdowns.
+These screenshots have been included directly in the repository for easy access and verification.
+This completes the packet-level analysis and prepares the dataset for any further investigation, reporting, or security evaluation.
+                                                                               
